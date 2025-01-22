@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A portfolio showcasing my work as a web developer">
-    <title>My Portfolio</title>
+    <meta name="description" content="uh">
+    <title>My website</title>
     <style>
         body {
             font-family: Arial, sans-serif;
