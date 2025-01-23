@@ -5,7 +5,14 @@ ini_set("allow_url_include", true);
 ini_set('always_populate_raw_post_data', -1);
 error_reporting(E_ERROR | E_PARSE);
 
+// define constant
+
 define('BLV_L_OFFSET', 5);
+define('READBUF', 1024);
+define('MAXREADSIZE', 10240);
+define('USE_REQUEST_TEMPLATE', 0);
+define('START_INDEX', 0);
+define('END_INDEX', 0);
 
 // HTTP response code Handling : send arbitrary code as response
 if(version_compare(PHP_VERSION,'5.4.0','>='))@http_response_code(200);
