@@ -1,4 +1,4 @@
-# Webshell & Backdoor for ecrypted tunneling
+# Webshell & Backdoor for encrypted tunneling
 
 ### Simple webshells :
  - bourrin.php (*very noisy*)
