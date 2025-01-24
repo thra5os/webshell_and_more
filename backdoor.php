@@ -87,8 +87,8 @@ if (USE_REQUEST_TEMPLATE == 1) {
     $post_data = substr($post_data, 0, -END_INDEX);
 }
 
-$info = blv_decode(base64_decode(strtr($post_data, $de, $en)));
-
+//$info = blv_decode(base64_decode(strtr($post_data, $de, $en)));
+$info = base64_decode(json_decode($postdata));
 echo "\n",$info,"\n";
 
 $rinfo = array();

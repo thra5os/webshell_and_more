@@ -17,8 +17,9 @@ $payload = [
     7 => "12345",      // Port (for CONNECT case)
 ];
 print_r($payload);
-$encoded = base64_encode(blv_encode($payload));
-$encoded = strtr($encoded, "+/", "-_");
+//$encoded = base64_encode(blv_encode($payload));
+$encoded = base64_encode(json_encode($payload));
+//$encoded = strtr($encoded, "+/", "-_");
 
 echo "Payload: " . $encoded . "\n";
 ?>
