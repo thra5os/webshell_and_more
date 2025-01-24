@@ -88,7 +88,9 @@ if (USE_REQUEST_TEMPLATE == 1) {
 }
 
 $info = blv_decode(base64_decode(strtr($post_data, $de, $en)));
-echo "info=  $info","\n";
+
+echo "\n",$info,"\n";
+
 $rinfo = array();
 
 $mark = $info[$MARK];
