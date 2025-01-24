@@ -119,10 +119,12 @@ switch($cmd){
             if ($res === false)
             {
                 $rinfo[$STATUS] = 'FAIL';
-                $rinfo[$ERROR] = 'Failed connecting to target';
+		$rinfo[$ERROR] = 'Failed connecting to target';
+		echo "\n failed conecting to $target:$port";
                 break;
 	    }
 	    else {
+		    echo "\n failed conecting to $target:$port";
 		    error_log("successfully connected to $target : $port");
 		}
 
