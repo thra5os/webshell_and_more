@@ -78,7 +78,11 @@ $de = "4brZlX06y+SFgxhVsuM2twHP8BAq7C1a5IjLDU9finKWGEpRezYmdJ/cv3OkNQoT";
 
 //extracting input 
 $post_data = file_get_contents("php://input");
+echo "\n";
 echo $post_data;
+echo "\n";
+
+
 //useless test added by neo-regeorg, might be useful later
 if (USE_REQUEST_TEMPLATE == 1) {
     $post_data = substr($post_data, START_INDEX);
@@ -86,6 +90,7 @@ if (USE_REQUEST_TEMPLATE == 1) {
 }
 
 $info = blv_decode(base64_decode(strtr($post_data, $de, $en)));
+echo "info "+ $info;
 $rinfo = array();
 
 $mark = $info[$MARK];
