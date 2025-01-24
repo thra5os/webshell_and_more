@@ -92,23 +92,19 @@ $info = json_decode(base64_decode($post_data),true);
 if (!$info){
 	die("payload failed");
 }
-echo base64_decode($post_data);
-//echo "\n",$info,"\n";
+
+echo "\n decoded payload : ", base64_decode($post_data), "\n";
 
 $rinfo = array();
-//echo "\n",$rinfo,"\n";
 
 $mark = $info[$MARK];
-echo "\n","mark :", $mark, "\n";
 
 $cmd = $info[$CMD];
-echo "\n","cùd :", $cmd, "\n";
 
 $run = "run".$mark;
 
 $writebuf = "writebuf".$mark;
 $readbuf = "readbuf".$mark;
-
 
 
 //command handling
