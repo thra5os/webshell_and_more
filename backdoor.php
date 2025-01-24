@@ -102,7 +102,7 @@ $mark = $info[$MARK];
 echo "\n","mark :", $mark, "\n";
 
 $cmd = $info[$CMD];
-echo "\n","cùd :", $CMD, "\n";
+echo "\n","cùd :", $cmd, "\n";
 
 $run = "run".$mark;
 
