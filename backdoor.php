@@ -219,7 +219,10 @@ switch($cmd){
     default: {
         $sayhello = true;
         @session_start();
-        session_write_close();
+	session_write_close();
+	echo "debug info ";
+	var_dump($info);
+	die();
     }
 }
 if ( $sayhello ) {
