@@ -93,15 +93,19 @@ if (!$info){
 	die("payload failed");
 }
 
-echo "\n",$info,"\n";
+//echo "\n",$info,"\n";
 
 $rinfo = array();
-echo "\n",$rinfo,"\n";
+//echo "\n",$rinfo,"\n";
 
 $mark = $info[$MARK];
 echo "\n","mark :", $mark, "\n";
+
 $cmd = $info[$CMD];
+echo "\n","cùd :", $CMD, "\n";
+
 $run = "run".$mark;
+
 $writebuf = "writebuf".$mark;
 $readbuf = "readbuf".$mark;
 
