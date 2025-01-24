@@ -88,7 +88,11 @@ if (USE_REQUEST_TEMPLATE == 1) {
 }
 
 //$info = blv_decode(base64_decode(strtr($post_data, $de, $en)));
-$info = json_decode(base64_decode($postdata));
+$info = json_decode(base64_decode($postdata),true);
+if (!$info){
+	die("payload failed");
+}
+
 echo "\n",$info,"\n";
 
 $rinfo = array();
