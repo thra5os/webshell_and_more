@@ -125,7 +125,10 @@ switch($cmd){
                 $rinfo[$STATUS] = 'FAIL';
                 $rinfo[$ERROR] = 'Failed connecting to target';
                 break;
-            }
+	    }
+	    else {
+		    error_log("successfully connected to $target : $port");
+		}
 
             stream_set_blocking($res, false);
             ignore_user_abort();
