@@ -78,7 +78,7 @@ switch($cmd){
             {
                 $rinfo[$STATUS] = 'FAIL';
 		$rinfo[$ERROR] = 'Failed connecting to target';
-		echo "\n failed conecting to $target:$port";
+		echo "\nError connecting to $target:$port. Error $errno: $errstr\n";
                 break;
 	    }
 	    else {
