@@ -92,7 +92,7 @@ $info = json_decode(base64_decode($post_data),true);
 if (!$info){
 	die("payload failed");
 }
-
+echo base64_decode($post_data);
 //echo "\n",$info,"\n";
 
 $rinfo = array();
