@@ -92,6 +92,7 @@ $info = blv_decode(base64_decode(strtr($post_data, $de, $en)));
 echo "\n",$info,"\n";
 
 $rinfo = array();
+echo "\n",$rinfo,"\n";
 
 $mark = $info[$MARK];
 $cmd = $info[$CMD];
