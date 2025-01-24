@@ -95,7 +95,7 @@ $rinfo = array();
 echo "\n",$rinfo,"\n";
 
 $mark = $info[$MARK];
-echo "mark", $mark;
+echo "\n","mark :", $mark, "\n";
 $cmd = $info[$CMD];
 $run = "run".$mark;
 $writebuf = "writebuf".$mark;
